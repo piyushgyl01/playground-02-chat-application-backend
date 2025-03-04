@@ -4,8 +4,8 @@ const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const Messages = require("./models/Messages");
-const User = require("./models/User");
+const Messages = require("./models/Messages.js");
+const User = require("./models/User.js");
 const authRoutes = require("./routes/auth");
 
 dotenv.config();
@@ -22,7 +22,7 @@ app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGODB)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
 
